@@ -1,4 +1,15 @@
-Write-Host 'Connecting to all Office 365 services' -foregroundcolor Green
+if (Get-Module -ListAvailable -Name MSOnline) {
+} else {
+    Write-Host "Microsoft Online Powershell Module is Missing, Please install before re-running script"
+    Exit
+}
+if (Get-Module -ListAvailable -Name Microsoft.Online.Sharepoint.Powershell) {
+} else {
+    Write-Host "Sharepoint Online Powershell Module is Missing, please install before re-running script"
+    Exit
+}
+
+Write-Host 'Connecting to all Office 365 - MSOL/SPO' -foregroundcolor Green
 $Username = $args[0]
 $Password = $args[1]
 $SecureStringPwd = $Password | ConvertTo-SecureString -AsPlainText -Force 
