@@ -9,6 +9,8 @@ $Msdomain = $Clientdomains.name | Select-String -Pattern 'onmicrosoft.com' | Sel
 $Msdomain = $Msdomain -replace ".onmicrosoft.com",""
 $AdminSite = "https://" + $Msdomain + "-admin.sharepoint.com"
 Connect-SPOService -Url $AdminSite -Credential $Creds
+
+# Path to Sharepoint SDK files, modify if you do not have a default install location
 Add-Type -Path "C:\Program Files\Common Files\Microsoft Shared\Web Server Extensions\16\ISAPI\Microsoft.SharePoint.Client.dll"
 Add-Type -Path "C:\Program Files\Common Files\Microsoft Shared\Web Server Extensions\16\ISAPI\Microsoft.SharePoint.Client.Runtime.dll"
 
